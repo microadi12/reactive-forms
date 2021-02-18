@@ -1,0 +1,64 @@
+<div class="container">
+
+  <h2 class="title"> Reactive Forms in Angular</h2>
+
+  <form [formGroup]="editForm">
+    <div class="form-group" class="col-md-6">
+      <label for="formGroupExampleInput">Example label</label>
+      <input type="email" class="form-control" id="formGroupExampleInput" formControlName="firstName"
+        placeholder="Example input">
+      <span *ngIf="editForm.get('firstName').touched && editForm.get('firstName').hasError('required')">Please Enter
+        Email</span>
+      <span *ngIf="editForm.get('firstName').touched && editForm.get('firstName').hasError('email')">Please Enter
+        correct Email</span>
+      <!-- <span *ngIf="editForm.get('firstName').touched && editForm.get('firstName').hasError('minlength')">Minimum 5 Charter Required</span>
+      <span *ngIf="editForm.get('firstName').touched && editForm.get('firstName').hasError('maxlength')">Maximum 10 chater is Required</span> -->
+    </div>
+    <div class="form-group pt-2" class="col-md-6">
+      <label for="formGroupExampleInput2">Another label</label>
+      <input type="text" class="form-control" id="formGroupExampleInput2" formControlName="lastName"
+        placeholder="Another input">
+      <span *ngIf="editForm.get('lastName').touched && editForm.get('lastName').hasError('required')">Please Enter
+        Lastname</span>
+
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="checkbox">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+
+    <!-- <div class="form-group row">
+      <label for="inputPassword" class="col-sm-2 col-form-label">Items</label>
+      <div class="col-sm-4" formArrayName="items">
+        <div *ngFor="let item of editForm.controls.items['controls']; let i = index" [formGroupName]="i">
+          <a [routerLink] (click)="removeItem(i)">remove</a>
+          <input class="form-control" type="text" formControlName="itemId" id="task{{i}}">
+          <input class="form-control" type="text" formControlName="itemName" id="task{{i}}">
+          <input class="form-control" type="text" formControlName="itemDesc" id="task{{i}}">
+          <input type="checkbox" formControlName="itemDone"> Mark as Done
+        </div>
+      </div> -->
+
+<!-- 
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Cars</label>
+        <div class="col-sm-4" formArrayName="cars">
+          <div *ngFor="let item of editForm.controls.cars['controls']; let i = index"> -->
+            <!-- <a [routerLink] (click)="removeItem(i)">remove</a> -->
+            <!-- <input class="form-control" type="text" [formControlName]="i" id="task{{i}}"> -->
+            <!-- <input type="checkbox" formControlName="itemDone"> Mark as Done  -->
+          <!-- </div>
+        </div>
+      </div> -->
+  </form>
+
+  <div class="pt-2">
+    <button class="btn btn-primary" (click)="onSubmit()" [disabled]="!editForm.valid">Submit</button>
+    <button class="btn btn-secondary ml-2" (click)="resetForm()">Reset</button>
+  </div>
+</div>
+
+
+<div>
+  Entered Value is : {{ valueChangeTracked }}
+</div>
