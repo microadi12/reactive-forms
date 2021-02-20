@@ -1,3 +1,75 @@
-<p>create-folio works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title text-center">
+            Add Nominee
+          </div>
+        </div>
+        <div class="card-body">
+          <form #f="ngForm">
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="Firstname">FirstName</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Firstname"
+                  placeholder="FirstName"
+                  [(ngModel)]="firstName"
+                  name="FirstName"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-12">
+                <label for="Lastname">LastName</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Lastname"
+                  placeholder="LastName"
+                  [(ngModel)]="lastName"
+                  name="lastName"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-12">
+                <label for="Email">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="Email"
+                  placeholder="Email"
+                  [(ngModel)]="email"
+                  name="email"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-12">
+                <label for="Password">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="Password"
+                  placeholder="Password"
+                  [(ngModel)]="password"
+                  name="password"
+                  required
+                />
+              </div>
+                 <div class="col-md-12">
+                  <div class="text-center">
+                      <button type="button" class="btn btn-primary" (click)="register(); f.reset()" [disabled]="!f.form.valid">Register</button>
+                  </div>
+                 </div>
+            </div>
+          </form>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <app-add-nominee></app-add-nominee>
