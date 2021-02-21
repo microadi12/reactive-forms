@@ -1,1 +1,40 @@
-<p>add-nominee works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title text-center">
+            <h2>Add Nominee</h2>
+          </div>
+
+        </div>
+        <div class="card-body">
+          <form [formGroup]="myForm">
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="firstName">Full Name</label>
+                <input type="text" formControlName="firstName" minlength="3" maxlength="16" class='form-control' placeholder="" id="firstName" required autocomplete="off" name="firstname">
+              </div>
+              <div class="form-group col-md-12">
+                <label for="relation">Relationship with nominee</label>
+                <input type="text" placeholder="" formControlName="relation" class='form-control' id="relation" required autocomplete="off" name="relation">
+              </div>
+              <div class="form-group col-md-12">
+                <label for="dob">Date OF Birth</label>
+                <input type="date" placeholder="" formControlName="dob" class='form-control' id="dob" required autocomplete="off" name="dob">
+              </div>
+              <div class="form-group col-md-12">
+                <label for="allocation">Allocation %</label>
+                <input type="text" placeholder="" formControlName="allocation" class='form-control' id="allocation" required autocomplete="off" name="allocation">
+              </div>
+            </div>
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary" (click)="addNominee()" [disabled]="!myForm.valid">Add Nominee</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
