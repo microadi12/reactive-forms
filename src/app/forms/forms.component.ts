@@ -17,6 +17,7 @@ export class FormsComponent implements OnInit {
 
   valueChangeTracked = '';
   editForm: FormGroup; //Give same name as given in a html Template.
+  yearArr: any = [];
   constructor(private formBuilder: FormBuilder) {
     // this.editForm = formBuilder.group({  // Building the form using formBuilder
     //   firstName: new FormControl(), // in the formBuilder - we are cerating a group of form elements these are exactly same as form template
@@ -75,6 +76,30 @@ export class FormsComponent implements OnInit {
       lastName: 'lastName',
       // checkbox: true
     });
+
+    new Date();
+    console.log(new Date().getDate());
+    console.log(new Date().getFullYear())
+    console.log(new Date().getDay());
+    console.log(new Date().getMinutes());
+    console.log(new Date().getHours());
+    console.log(new Date().getMonth());
+    console.log(new Date().getMonth() + 1)
+    console.log(new Date().getUTCFullYear());
+    console.log(new Date().toLocaleDateString());
+    console.log(new Date().toLocaleTimeString());
+    console.log(new Date().getFullYear() - 99);
+    console.log(new Date().getFullYear() + 100);
+
+   let startYear = new Date().getFullYear() - 99;
+   let endYear = new Date().getFullYear() + 100;
+
+    for(let i = startYear; i <= endYear; i++){
+      this.yearArr.push(i);
+    }
+
+    console.log(this.yearArr);
+    
   }
 
   onSubmit() {
@@ -83,6 +108,7 @@ export class FormsComponent implements OnInit {
     console.log(this.editForm.value.firstName);
     console.log(this.editForm.value.lastName); // using this we get the read the indiviual value.
     console.log(this.editForm.value.checkbox);
+
 
     // this.resetForm();
     // Set value 
