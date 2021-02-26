@@ -14,7 +14,7 @@ export class CreateFolioComponent implements OnInit {
   ngForm: any;
 
 
-
+  currentItem = 'Welcome Aditya singh';
   constructor() { }
 
   ngOnInit() {

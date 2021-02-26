@@ -14,22 +14,31 @@ import { VariableAst } from "@angular/compiler";
 })
 export class AddNomineeComponent implements OnInit {
   myForm: FormGroup;
+  @Input() list: string;
 
-  constructor() {}
+
+
+  constructor() {
+     
+  }
 
   ngOnInit() {
     this.myForm = new FormGroup({
-      firstName: new FormControl("", Validators.required),
-      relation: new FormControl("", Validators.required),
-      dob: new FormControl("", Validators.required),
-      allocation: new FormControl("", Validators.required)
+      firstName: new FormControl('', [Validators.required , Validators.minLength(8)]),
+      relation: new FormControl('', Validators.required),
+      dob: new FormControl('', Validators.required),
+      allocation: new FormControl('', [Validators.required, Validators.maxLength(100)])
     });
 
+    console.log(this.list);
+
    this.setDate(); 
+
   }
   
   setDate() {
     this.myForm.patchValue({ dob: "1996-12-04" });
+    
   }
 
   addNominee() {
