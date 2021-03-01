@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <h5>Add Personal Infomation</h5>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <form [formGroup]="addInfo">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="firstName">First Name</label>
+                      <input type="text" class="form-control" formControlName="firstName" id="firstName" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="lastName">Last Name</label>
+                      <input type="text" class="form-control" formControlName="lastName" id="lastName" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" formArrayName="address">
+                  <div class="col-md-12" *ngFor="let group of addressArray.controls; let i = index" [formGroupName]="i">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <h5>Address</h5>
+                      </div>
+                      <div class="col-md-4 ">
+                        <button class="col-4 btn btn-danger btn-sm justify-content-end"
+                          style="float: right;" (click)="removeAddress(i)" *ngIf="i+1 == addressArray.controls.length">Remove</button>
+                        <button class="col-4 ml-2 btn btn-success btn-sm justify-content-end"
+                          style="float: right;margin-right: 10px" (click)="addAddress()"  *ngIf="i+1 == addressArray.controls.length">Add</button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 form-group">
+                        <label for="address">Room No/Block</label>
+                        <input type="text" id="address" formControlName="blockNo" class="form-control">
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label for="street">Street</label>
+                        <input type="text" id="street" formControlName="street" class="form-control">
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" formControlName="city" class="form-control">
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label for="state">State</label>
+                        <input type="text" id="state" formControlName="state" class="form-control">
+                      </div>
+                      <div class="col-md-3 form-group">
+                        <label for="pincode">Pincode</label>
+                        <input type="text" id="pincode" formControlName="pincode" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-success " (click)="addForm()">Submit</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+          
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

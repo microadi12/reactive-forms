@@ -1,1 +1,41 @@
-<p>dashboard works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-2">
+      <button class="btn btn-success" (click)="addSkills();">Add Skills</button>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-1">
+      <button class="btn btn-primary" (click)="clearSkills();">Clear</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div *ngFor="let control of skills.controls; index as i">
+        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+          <!-- <label for="enterName">Enter Name Here</label> -->
+          <!-- code for formcontrol push to formArray -->
+          <!-- <div>
+            <input [formControl]="skills.controls[i]" id="enterName" class="form-control" />
+            <button class="btn btn-danger" (click)="removeSkills(i)" style="margin-top: 5px;">Remove</button>
+          </div> -->
+          <ng-container [formGroup]="editForm">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="firstName">FirstName</label>
+                <input id="firstName" class="form-control" #firstName formControlName="firstName" />
+              </div>
+              <div class="col-md-6">
+                <label for="lastName">LastName</label>
+                <input id="lastName" class="form-control" #lastName formControlName="lastName" />
+              </div>
+              <button class="btn btn-danger" (click)="removeSkills(i)" style="margin-top: 5px;">Remove</button>
+              <button class="btn btn-danger" (click)="submit()" style="margin-top: 5px; margin-left: 10px">Submit</button>
+            </div>
+
+
+          </ng-container>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

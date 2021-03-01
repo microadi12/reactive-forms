@@ -7,6 +7,7 @@ import {
   Validators
 } from "@angular/forms";
 import { variable } from '@angular/compiler/src/output/output_ast';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-forms",
@@ -18,7 +19,7 @@ export class FormsComponent implements OnInit {
   valueChangeTracked = '';
   editForm: FormGroup; //Give same name as given in a html Template.
   yearArr: any = [];
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
     // this.editForm = formBuilder.group({  // Building the form using formBuilder
     //   firstName: new FormControl(), // in the formBuilder - we are cerating a group of form elements these are exactly same as form template
     //   lastName: new FormControl()
@@ -108,7 +109,10 @@ export class FormsComponent implements OnInit {
     console.log(this.editForm.value.firstName);
     console.log(this.editForm.value.lastName); // using this we get the read the indiviual value.
     console.log(this.editForm.value.checkbox);
-
+    if(this.editForm.valid == true){
+     this.router.navigateByUrl('dashboard');
+    //  this.router.navigate(['/dashboard']);
+    }
 
     // this.resetForm();
     // Set value 
