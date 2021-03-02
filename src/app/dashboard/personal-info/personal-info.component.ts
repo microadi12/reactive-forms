@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-personal-info',
@@ -9,6 +11,11 @@ import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 export class PersonalInfoComponent implements OnInit {
   
   addInfo : FormGroup;
+
+  @Input() parentToChild : [];
+
+
+  @Output() nameCheck = new EventEmitter<string>();
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -40,6 +47,7 @@ export class PersonalInfoComponent implements OnInit {
 
   addForm(){
     console.log(this.addInfo.value);
+    this.nameCheck.emit(this.addInfo.value);
   }
 
   removeAddress(index : number){

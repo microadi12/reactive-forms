@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsComponent } from './forms/forms.component';
 import { ReactiveFormsModule } from '@angular/forms'
+import { HttpInterceptorService } from './providers/http-interceptor.service'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { NoopInterceptor } from './http-interceptors/noop-interceptor'
+
 
 @NgModule({
   declarations: [
@@ -15,9 +19,14 @@ import { ReactiveFormsModule } from '@angular/forms'
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     
   ],
-  providers: [],
+  providers: [
+    HttpInterceptorService,
+    { provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

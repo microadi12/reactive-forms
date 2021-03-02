@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Profile } from '../model/profile.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,10 +8,14 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  profile : Profile[];
+  checkOut = ['aditya', 'virendra' ,'singh']
   editForm : FormGroup;
   skills = new FormArray([
     
   ]);
+  data: any;
    
    
   
@@ -18,6 +23,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.addSkills();
+    console.log(this.profile);
+    // console.log(this.profile.page);
   }
 
 
@@ -49,4 +56,10 @@ export class DashboardComponent implements OnInit {
   clearSkills(){
     this.skills.clear();
   }
+
+  showData(event : any) {
+   this.data = event
+   console.log(this.data);
+  }
+
 }

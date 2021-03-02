@@ -61,4 +61,23 @@
 
 <div>
   Entered Value is : {{ valueChangeTracked }}
+
+  <p>page {{profile.page}}</p>
+  <p>Next page {{profile.next_page}}</p>
+  <p>Per Page {{profile.per_page}}</p>
+  <div *ngFor="let pic of profile.photos">
+    <p>{{pic.id}}</p>
+    <p>{{pic.liked}}</p>
+    <p>{{pic.photographer}}</p>
+    <p>{{pic.photographer_id}}</p>
+    <p>{{pic.photographer_url}}</p>
+    <img src={{pic.src.original}} width="500" height="400">
+    <!-- <img src={{pic.src.medium}} width="pic.width" height="pic.height"> 
+    <img src={{pic.src.tiny}} width="pic.width" height="pic.height">
+    <img src={{pic.src.portrait}} width="pic.width" height="pic.height"> -->
+    <p>{{pic.width}}</p>
+    <p>{{pic.url}}</p>
+    <p>{{pic.height}}</p>
+    <p> =======Stop========== </p>
+  </div>
 </div>

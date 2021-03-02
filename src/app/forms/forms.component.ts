@@ -6,8 +6,12 @@ import {
   FormBuilder,
   Validators
 } from "@angular/forms";
-import { variable } from '@angular/compiler/src/output/output_ast';
+
+import { HttpInterceptorService } from '../providers/http-interceptor.service';
 import { Router } from '@angular/router';
+import { Profile } from '../model/profile.model';
+
+
 
 @Component({
   selector: "app-forms",
@@ -15,15 +19,25 @@ import { Router } from '@angular/router';
   styleUrls: ["./forms.component.scss"]
 })
 export class FormsComponent implements OnInit {
-
+  
+  
+  profile : Profile[]
+ 
   valueChangeTracked = '';
   editForm: FormGroup; //Give same name as given in a html Template.
   yearArr: any = [];
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  page: number;
+  per_page: number;
+  photos: [];
+  next_page: any;
+ 
+  constructor(private formBuilder: FormBuilder, private router: Router, private httpServices : HttpInterceptorService) {
     // this.editForm = formBuilder.group({  // Building the form using formBuilder
     //   firstName: new FormControl(), // in the formBuilder - we are cerating a group of form elements these are exactly same as form template
     //   lastName: new FormControl()
     // });
+     
+    this.getPhotos();
 
     this.editForm = formBuilder.group({  // Building the form using formBuilder
       firstName: ['',[Validators.required, Validators.email]], // in the formBuilder - we are cerating a group of form elements these are exactly same as form template
@@ -51,6 +65,8 @@ export class FormsComponent implements OnInit {
     //   lastName: 'lastName',
     //   checkbox: true
     // }); // we cannot omit or leave the fields
+    
+    this.getPhotos();
 
     this.editForm.get('firstName').valueChanges.subscribe(data => { //
      this.valueChangeTracked = data
@@ -125,6 +141,19 @@ export class FormsComponent implements OnInit {
     this.editForm.reset(); //we will use the reset() to reset entire form in one shot;
     
   }
+
+  getPhotos() {
+    this.httpServices.getPics().subscribe((res : any)=> {
+      console.log('aditya')
+     console.log(res);
+     this.profile = res;
+     console.log(this.profile)
+    }, (err)=> {
+      console.log('Aditya Singh')
+      console.log(err)
+    })
+  }
+  
 }
 
 

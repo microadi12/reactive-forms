@@ -30,12 +30,30 @@
               <button class="btn btn-danger" (click)="removeSkills(i)" style="margin-top: 5px;">Remove</button>
               <button class="btn btn-danger" (click)="submit()" style="margin-top: 5px; margin-left: 10px">Submit</button>
             </div>
+             <div class="row">
+              <div class="col-md-12">
+                <p>First Name : {{data.firstName}}</p>
+                <p>lastName : {{data.lastName}}</p>
+                <div *ngFor="let address of data.address">
+                    <p>Block No : {{address.blockNo}}</p>
+                    <p>Street : {{address.street}}</p>
+                    <p>City : {{address.city}}</p>
+                    <p>State : {{address.state}}</p>
+                    <p>Pincode : {{address.pincode}}</p>
+                </div>
 
+              </div>
+             </div>
 
           </ng-container>
 
         </div>
       </div>
     </div>
+  </div>
+  <div class="row">
+   <div class="col-md-12">
+    <app-personal-info [parentToChild]="checkOut" (nameCheck)="showData($event)"></app-personal-info>
+   </div>
   </div>
 </div>
